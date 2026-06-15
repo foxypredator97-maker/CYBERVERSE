@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERVERSE</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>CYBERVERSE</h1>
+
+    <h2>Cybersecurity Command Center</h2>
+
+    <div class="dashboard">
+
+        <!-- PASSWORD ANALYZER -->
+
+        <div class="card">
+
+            <h3>🔐 Password Security Analyzer</h3>
+
+            <form method="POST">
+
+                <input
+                    type="text"
+                    name="password"
+                    placeholder="Enter Password"
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+                    Analyze Password
+                </button>
+
+            </form>
+
+            {% if strength %}
+
+            <hr>
+
+            <p><strong>Password:</strong> {{ searched_password }}</p>
+
+            <p><strong>Score:</strong> {{ score }}/5</p>
+
+            <p><strong>Strength:</strong> {{ strength }}</p>
+
+            <p><strong>Crack Time:</strong> {{ crack_time }}</p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- PHISHING DETECTOR -->
+
+        <div class="card">
+
+            <h3>🎣 Phishing URL Detector</h3>
+
+            <form method="POST">
+
+                <input
+                    type="text"
+                    name="url"
+                    placeholder="Enter URL"
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+                    Analyze URL
+                </button>
+
+            </form>
+
+            {% if phishing_score > 0 %}
+
+            <hr>
+
+                <p><strong>Analyzed URL:</strong> {{ searched_url }}</p>
+
+                <p><strong>Risk Score:</strong> {{ phishing_score }}%</p>
+
+                <p><strong>Result:</strong> {{ phishing_result }}</p>
+
+                {% endif %}
+
+        </div>
+
+        <!-- VULNERABILITY SCANNER -->
+
+        <div class="card">
+
+            <h3>🛡️ Vulnerability Scanner</h3>
+
+            <form method="POST">
+
+                <input
+                    type="text"
+                    name="software"
+                    placeholder="Enter Software Name"
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+                    Scan Software
+                </button>
+
+            </form>
+
+            {% if vulnerability_result %}
+
+<hr>
+
+<p><strong>Software:</strong> {{ searched_software }}</p>
+
+<p><strong>CVE:</strong> {{ cve }}</p>
+
+<p><strong>Severity:</strong> {{ severity }}</p>
+
+<p><strong>Description:</strong> {{ vulnerability_result }}</p>
+
+{% endif %}
+
+        </div>
+
+        <!-- DIGITAL FORENSICS -->
+
+        <div class="card">
+
+            <h3>💾 Digital Forensics Analyzer</h3>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="evidence_file"
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+                    Analyze File
+                </button>
+
+            </form>
+
+            {% if md5_hash %}
+
+            <hr>
+
+            <p><strong>File Name:</strong> {{ file_name }}</p>
+
+            <p><strong>File Size:</strong> {{ file_size }} bytes</p>
+
+            <p><strong>MD5:</strong> {{ md5_hash }}</p>
+
+            <p><strong>SHA1:</strong> {{ sha1_hash }}</p>
+
+            <p><strong>SHA256:</strong> {{ sha256_hash }}</p>
+
+            {% endif %}
+
+        </div>
+
+<!-- THREAT INTELLIGENCE -->
+
+<div class="card">
+
+    <h3>🌍 Threat Intelligence Feed</h3>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="ip_address"
+            placeholder="Enter IP Address"
+            required>
+
+        <br><br>
+
+        <button type="submit">
+            Analyze IP
+        </button>
+
+    </form>
+
+    {% if threat_score %}
+
+    <hr>
+
+    <p><strong>IP Address:</strong> {{ searched_ip }}</p>
+
+    <p><strong>Threat Score:</strong> {{ threat_score }}</p>
+
+    <p><strong>Country:</strong> {{ country }}</p>
+
+    <p><strong>Category:</strong> {{ category }}</p>
+
+    <p><strong>Risk Level:</strong> {{ risk_level }}</p>
+
+    {% endif %}
+
+</div>
+
+<!-- AI INCIDENT RESPONSE -->
+
+<div class="card">
+
+    <h3>🤖 AI Incident Response Assistant</h3>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="incident_text"
+            placeholder="Describe Incident"
+            required>
+
+        <br><br>
+
+        <button type="submit">
+            Analyze Incident
+        </button>
+
+    </form>
+
+    {% if incident_severity %}
+
+    <hr>
+
+    <p><strong>Incident:</strong> {{ searched_incident }}</p>
+    
+    <p><strong>Severity:</strong> {{ incident_severity }}</p>
+
+    <p><strong>Recommended Actions:</strong></p>
+
+    <ul style="list-style:none; padding:0;">
+        {% for action in incident_actions %}
+        <li>{{ action }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+</div>
+
+</div>
+
+<!-- ATTACK VISUALIZATION DASHBOARD -->
+
+<div class="card full-width">
+
+    <h3>📊 Attack Visualization Dashboard</h3>
+
+    <div class="attack-stats">
+
+        <div class="stat-box">
+            <h4>Phishing Attacks</h4>
+            <p>124</p>
+        </div>
+
+        <div class="stat-box">
+            <h4>Malware Events</h4>
+            <p>87</p>
+        </div>
+
+        <div class="stat-box">
+            <h4>Critical CVEs</h4>
+            <p>42</p>
+        </div>
+
+        <div class="stat-box">
+            <h4>Threat IPs</h4>
+            <p>19</p>
+        </div>
+
+    </div>
+
+</div>
+<footer>
+    <p>
+        CYBERVERSE © 2026 | AI-Powered Cybersecurity Operations Platform
+        <br>
+        Developed by Anshul Garg
+    </p>
+</footer>
+
+</body>
+</html>
